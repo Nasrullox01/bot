@@ -3,11 +3,6 @@
     include 'Telegram.php';
 
     $telegram = new Telegram('5940638836:AAEtoJSXbVRcQs1aVycTxCdjdYmxm7BKT-M');
-    $chat_id = $telegram->ChatID();
-    // echo $chat_id;
-    $text = $telegram->Text();
-     
-$telegram = new Telegram('YOUR TELEGRAM TOKEN HERE');
 
 $req = $telegram->getUpdates();
 
