@@ -1,27 +1,66 @@
-<?php
+<?php 
+    
+    include 'Telegram.php';
 
-include 'Telegram.php';
+    $telegram = new Telegram('5940638836:AAEtoJSXbVRcQs1aVycTxCdjdYmxm7BKT-M');
+    $chat_id = $telegram->ChatID();
+    // echo $chat_id;
+    $text = $telegram->Text();
+     
+         
+     
+   if($text == "/start")
+   {
+    $content = array('chat_id' => $chat_id, 'text' => "Salom hush kelibsiz!"); 
+    $telegram->sendMessage($content); 
+    
+     $ulash = mysqli_connect("localhost","id17907369_rootbot","l(Gysg/1@W*#E7}F","id17907369_itedukokandbot") or die("Bazaga ulanmadi");
+                $yoz = "insert into user (username,password) values ('{$text}','{$text}')";
 
-$telegram = new Telegram('5940638836:AAEtoJSXbVRcQs1aVycTxCdjdYmxm7BKT-M');
-$chat_id = $telegram->ChatID();
-$text = $telegram->Text()
-if($text == "/start")
-{
-$option = array( 
+                $r = mysqli_query($ulash,$yoz) or die(mysqli_error($ulash));
+                if($r)
+                {
+                    echo "yozdi";
+                }
+                else{
+                    echo "xato";
+            
+                }
+    $option = array( 
     //First row
-    array($telegram->buildKeyboardButton("Button 1"), $telegram->buildKeyboardButton("Button 2")), 
+    array($telegram->buildKeyboardButton("✅ Button 1"), $telegram->buildKeyboardButton("Button 2")), 
     //Second row 
     array($telegram->buildKeyboardButton("Button 3"), $telegram->buildKeyboardButton("Button 4"), $telegram->buildKeyboardButton("Button 5")), 
     //Third row
-    array($telegram->buildKeyboardButton("Button 6")) );
-$keyb = $telegram->buildKeyBoard($option, $onetime=false);
-$content = array('chat_id' => $chat_id, 'reply_markup' => $keyb, 'text' => "Ботдан фойдаланиш учун телефон рақамингизни рўйхатдан ўтказиш зарур. 📱
-
-Қуйидаги кнопка орқали телефон рақамингизни юборинг. ⬇️
+    array($telegram->buildKeyboardButton("Button 6")),
+    array($telegram->buildKeyboardButton("Button 7"))
+    );
+    $keyb = $telegram->buildKeyBoard($option, $onetime=false, $resize=true);
+    $content = array('chat_id' => $chat_id, 'reply_markup' => $keyb, 'text' => "This is a Keyboard Test");
+    $telegram->sendMessage($content);
     
-    Тасдиқлаш коди SMS тарзида юборилади. ️📩");
-$telegram->sendMessage($content); 
-}
+   }
+   elseif($text == "/help")
+   {
+        $content = array('chat_id' => $chat_id, 'text' => "Adminga murojat qiling!"); 
+       $telegram->sendMessage($content); 
+   }
+   elseif($text == "✅ Button 1")
+    {
+    //     $content = array('chat_id' => $chat_id, 'text' => "Bu video"); 
+    //   $telegram->sendMessage($content); 
+    
+    $option = array( 
+    //First row
+    array($telegram->buildKeyboardButton("✅ Button 1"), $telegram->buildKeyboardButton("Button 2")), 
+    //Second row 
+   
+    );
+    $keyb = $telegram->buildKeyBoard($option, $onetime=false, $resize=true);
+    $content = array('chat_id' => $chat_id, 'reply_markup' => $keyb, 'text' => "This is a Keyboard Test");
+    $telegram->sendMessage($content);
+    }   
+    
+    
+    
 ?>
-
-
