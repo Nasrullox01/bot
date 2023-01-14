@@ -2,8 +2,9 @@
 
 include 'Telegram.php';
 
-$telegram = new Telegram('5850021847:AAE24CnxqkzidyzSu7N4MZHkTKjpuRBZ7Fg');
+$telegram = new Telegram('5940638836:AAEtoJSXbVRcQs1aVycTxCdjdYmxm7BKT-M');
 $chat_id = $telegram->ChatID();
+$text = $telegram->Text()
 if($text == "/start")
 {
 $option = array( 
